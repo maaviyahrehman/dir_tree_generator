@@ -1,3 +1,14 @@
+# ===========================================================
+# Author: Maaviyah Rehman
+# Email: 64760@students.riphah.edu.pk
+# GitHub: https://github.com/maaviyahrehman
+# Description: Directory Tree Generator - A Python application to
+#              generate and save directory structures in Text or PDF format.
+# License: MIT License
+# Version: 1.0.0
+# Date: March 2025
+# ===========================================================
+
 import os
 import tkinter as tk
 from tkinter import filedialog, messagebox
