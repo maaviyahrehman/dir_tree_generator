@@ -19,15 +19,16 @@ from reportlab.pdfgen import canvas
 
 
 def get_tree_structure(startpath):
-    """Recursively get the directory tree structure."""
+    """Recursively get the directory tree structure in the desired format."""
     tree = ''
     for root, dirs, files in os.walk(startpath):
         level = root.replace(startpath, '').count(os.sep)
-        indent = ' ' * 4 * (level)
-        tree += f"{indent}{os.path.basename(root)}/\n"
-        subindent = ' ' * 4 * (level + 1)
-        for file in files:
-            tree += f"{subindent}{file}\n"
+        indent = '│   ' * (level)  # Indentation based on the directory depth
+        base_name = os.path.basename(root)
+        tree += f"{indent}├── {base_name}/\n" if level != 0 else f"{base_name}/\n"  # Add directory to tree
+        subindent = '│   ' * (level + 1)  # Add extra indentation for files
+        for i, file in enumerate(files):
+            tree += f"{subindent}├── {file}\n" if i < len(files) - 1 else f"{subindent}└── {file}\n"  # Add files with tree formatting
     return tree
 
 
